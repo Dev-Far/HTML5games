@@ -31,5 +31,5 @@ const buttonSFX = new Audio("music/Button.mp3"); // Replace with your sound file
 });
 
 playButton.addEventListener("click", () => {
-    window.open('https://netlify.app/Games/click-the-target/index.html')
+    window.open('/Games/click-the-target/index.html')
 } )
