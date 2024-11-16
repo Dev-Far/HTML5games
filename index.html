@@ -3,61 +3,113 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Click the Target Game</title>
+  <title>Play Games</title>
   <style>
-    canvas {
-      border: 2px solid #333;
-      background-color: #f0f0f0;
+    @import url('https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Host+Grotesk:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    html{
+      font-family: "Poppins", sans-serif;
     }
-  </style>
+    body{
+      margin: 0px;
+      padding: 0px;
+    }
+    main{
+      background-image: url('images/Designer (12).jpeg');
+      width: auto;
+      height: 100vh;
+      background-size: 350px;
+      display: flex;
+      flex-direction: column;
+
+    }
+    .menu{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .head{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin: 50px 15px;
+      padding-bottom: 25px;
+      background-color: hsl(272, 100%, 50%);
+      border-radius: 25px;
+      &> h1{
+        font-size: 3rem;
+        color: hsl(182, 100%, 50%);
+        text-shadow: 5px 2px 0px rgb(1, 0, 85);
+        padding: 7px;
+        margin: 0px;
+      }
+      & > h2{
+        border-radius: 0px 0px 25px 25px;
+        padding: 7px;
+        margin: -25px;
+        font-size: 2rem;
+        color: beige;
+      }
+    }
+    .btn{
+      margin: 5px;
+      width: 250px;
+      padding: 10px;
+      font-family: "Afacad Flux", serif;
+      font-size: 2rem;
+      font-weight: 900;
+      color: beige;
+      background: hsl(272, 100%, 50%);
+      border: none;
+      border-radius: 17px;
+      box-shadow: 2px 5px black;
+      &:active{
+        box-shadow: none;
+        translate: 2px 5px;
+      }
+    }
+    .musicbtn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 55px;
+      height: 55px;
+      border: none;
+      background-color: aqua;
+      opacity: 1;
+      border-radius: 12px;
+      & > svg{
+        fill: black;
+      }
+    }
+    .music{
+      position: sticky;
+      top: 0px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 10px;
+    }
+    </style>
 </head>
 <body>
-  <h1>Click the Target!</h1>
-  <canvas id="gameCanvas" width="400" height="400"></canvas>
-  <p>Score: <span id="score">0</span></p>
-
-  <script>
-    const canvas = document.getElementById("gameCanvas");
-    const ctx = canvas.getContext("2d");
-
-    let target = { x: 50, y: 50, size: 20 };
-    let score = 0;
-
-    function randomPosition() {
-      target.x = Math.random() * (canvas.width - target.size);
-      target.y = Math.random() * (canvas.height - target.size);
-    }
-
-    function drawTarget() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.beginPath();
-      ctx.arc(target.x, target.y, target.size, 0, Math.PI * 2);
-      ctx.fillStyle = "red";
-      ctx.fill();
-      ctx.closePath();
-    }
-
-    canvas.addEventListener("click", (event) => {
-      const rect = canvas.getBoundingClientRect();
-      const clickX = event.clientX - rect.left;
-      const clickY = event.clientY - rect.top;
-
-      const dist = Math.hypot(target.x - clickX, target.y - clickY);
-
-      if (dist < target.size) {
-        score++;
-        document.getElementById("score").textContent = score;
-        randomPosition();
-      }
-    });
-
-    function gameLoop() {
-      drawTarget();
-      requestAnimationFrame(gameLoop);
-    }
-
-    randomPosition();
-    gameLoop();
-  </script>
+  <main>
+    <div class="music">
+      <button class="musicbtn" onclick="playAudio()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M560-131v-82q90-26 145-100t55-168q0-94-55-168T560-749v-82q124 28 202 125.5T840-481q0 127-78 224.5T560-131ZM120-360v-240h160l200-200v640L280-360H120Zm440 40v-322q47 22 73.5 66t26.5 96q0 51-26.5 94.5T560-320ZM400-606l-86 86H200v80h114l86 86v-252ZM300-480Z"/></svg></button>
+      <button class="musicbtn" onclick="pauseAudio()"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed"><path d="M792-56 671-177q-25 16-53 27.5T560-131v-82q14-5 27.5-10t25.5-12L480-368v208L280-360H120v-240h128L56-792l56-56 736 736-56 56Zm-8-232-58-58q17-31 25.5-65t8.5-70q0-94-55-168T560-749v-82q124 28 202 125.5T840-481q0 53-14.5 102T784-288ZM650-422l-90-90v-130q47 22 73.5 66t26.5 96q0 15-2.5 29.5T650-422ZM480-592 376-696l104-104v208Zm-80 238v-94l-72-72H200v80h114l86 86Zm-36-130Z"/></svg></button>
+    </div>
+    <div class="head">
+      <h1>PIXELSKIMMER</h1>
+      <h2>Games</h2>
+    </div>
+    <div class="menu">
+      <button class="btn" id="play">PLAY</button>
+      <button class="btn" id="login">LOG IN</button>
+      <button class="btn" id="leaderboard">LEADERBOARD</button>
+      <button class="btn" id="support">SUPPORT</button>
+    </div>
+  </main>
+  <script src="script.js"></script>
 </body>
 </html>
