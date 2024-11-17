@@ -4,11 +4,11 @@ audio.loop = true;
 audio.volume = 0.5;
 
 function playAudio() {
-  audio.play();
+    audio.play();
 }
 
 function pauseAudio() {
-  audio.pause();
+    audio.pause();
 }
 
 window.addEventListener('load', playAudio);
@@ -20,16 +20,31 @@ const supportButton = document.getElementById("support");
 const loginButton = document.getElementById("login");
 
 // Create the button SFX audio
-const buttonSFX = new Audio("music/Button.mp3"); // Replace with your sound file
+const buttonSFX = new Audio("music/SFX/buttonSFX.mp3"); // Replace with your sound file
 
 // Add event listeners to all buttons
 [playButton, leaderboardButton, supportButton, loginButton].forEach(button => {
-  button.addEventListener("click", () => {
+    button.addEventListener("click", () => {
     buttonSFX.currentTime = 0; // Reset the audio to the start
     buttonSFX.play();
   });
 });
 
-// playButton.addEventListener("click", () => {
-//     window.open('https://pixelskimmergames.netlify.app/Games/click-the-target/index.html')
-// } )
+playButton.addEventListener("click", () => {
+    window.open('./Games/click-the-target/index.html');
+} );
+
+playButton.addEventListener("click", () => {
+    window.open('./Games/click-the-target/index.html');
+} );
+
+playButton.addEventListener("click", () => {
+    window.open('./Games/click-the-target/index.html');
+} );
+
+playButton.addEventListener("click", () => {
+    window.open('./Games/click-the-target/index.html');
+} );
+
+
+
