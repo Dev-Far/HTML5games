@@ -37,7 +37,7 @@ const supportButton = document.getElementById("support");
 const loginButton = document.getElementById("login");
 
 // Create the button SFX audio
-const buttonSFX = new Audio("music/SFX/buttonSFX.mp3"); // Replace with your sound file
+const buttonSFX = new Audio("music/SFX/Button.mp3"); // Replace with your sound file
 
 // Add event listeners to all buttons
 [playButton, leaderboardButton, supportButton, loginButton].forEach(button => {
