@@ -1,0 +1,24 @@
+html{
+    font-family: "", sans-serif;
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.heading > h1{
+    font-family: "Poppins";
+    font-size: 4rem;
+    font-weight: 300;
+}
+
+.btn img {
+    width: 100%;
+    margin: 0px;
+}
+
+.btn {
+    width: 40%;
+    height: 100%;
+}

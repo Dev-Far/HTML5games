@@ -48,8 +48,8 @@ main{
 .btn{
   margin: 5px;
   width: 250px;
-  text-align: center;
-  text-decoration: none;
+  /* text-align: center;
+  text-decoration: none; */
   padding: 10px;
   font-family: "Afacad Flux", serif;
   font-size: 2rem;
@@ -59,11 +59,27 @@ main{
   border: none;
   border-radius: 17px;
   box-shadow: 2px 5px black;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
   &:active{
     box-shadow: none;
     translate: 2px 5px;
   }
 }
+
+aside{
+    height: 100vh;
+    width: 70%;
+    background: linear-gradient(to right, violet, aqua);
+    position: absolute;
+    z-index: 100;
+    translate: -5000px;
+    transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+aside.open{
+    translate: 0px;
+}
+
 .musicbtn{
   display: inline-flex;
   align-items: center;
