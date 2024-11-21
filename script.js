@@ -5,8 +5,10 @@ const aside = document.getElementById("music-section");
 // Create the background audio
 const audio1 = new Audio('./music/Game_Music.mp3'); // Replace with your music file path
 const audio2 = new Audio('./music/vintage-movie-piano-252205.mp3'); // Replace with your music file path
-audio.loop = true;
-audio.volume = 0.5;
+audio1.loop = true;
+audio2.volume = 0.3;
+audio1.loop = true;
+audio1.volume = 0.3;
 
 function playAudio1() {
     audio1.play();
@@ -28,7 +30,7 @@ function pauseAudio() {
     // console.log(aside.classList); // Check if "open" is toggled
 }
 
-window.addEventListener('load', playAudio);
+window.addEventListener("DOMContentLoaded", playAudio1);
 
 // Get the button elements
 const playButton = document.getElementById("play");
@@ -37,14 +39,20 @@ const supportButton = document.getElementById("support");
 const loginButton = document.getElementById("login");
 
 // Create the button SFX audio
-const buttonSFX = new Audio("music/SFX/buttonSFX.mp3"); // Replace with your sound file
+const buttonSFX = new Audio("./music/SFX/buttonSFX.mp3"); // Replace with your sound file
+
+buttonSFX.volume = 1.0; // Set the volume to maximum
+
+console.log(playButton, leaderboardButton, supportButton, loginButton);
 
 // Add event listeners to all buttons
 [playButton, leaderboardButton, supportButton, loginButton].forEach(button => {
     button.addEventListener("click", () => {
-    buttonSFX.currentTime = 0; // Reset the audio to the start
-    buttonSFX.play();
-  });
+        console.log("Button clicked!"); // Debugging log
+        buttonSFX.currentTime = 0; // Reset the audio to the start
+        buttonSFX.play();
+    });
+    
 });
 
 playButton.addEventListener("click", () => {
