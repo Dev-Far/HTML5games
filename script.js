@@ -45,6 +45,8 @@ buttonSFX.volume = 1.0; // Set the volume to maximum
 
 console.log(playButton, leaderboardButton, supportButton, loginButton);
 
+const buttonSFX = new Audio("./music/SFX/Button.mp3"); // Replace with your sound file
+
 // Add event listeners to all buttons
 [playButton, leaderboardButton, supportButton, loginButton].forEach(button => {
     button.addEventListener("click", () => {
